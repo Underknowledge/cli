@@ -104,6 +104,7 @@ $  step ssh certificate --kty OKP --curve Ed25519 mariano@work id_ed25519
 			flags.Curve,
 			flags.Size,
 			flags.Insecure,
+			flags.CallbackPort
 		},
 	}
 }
@@ -134,6 +135,7 @@ func loginAction(ctx *cli.Context) error {
 	isAddUser := ctx.Bool("add-user")
 	force := ctx.Bool("force")
 	insecure := ctx.Bool("insecure")
+	CallbackPort := ctx.String("port")
 	validAfter, validBefore, err := flags.ParseTimeDuration(ctx)
 	if err != nil {
 		return err
